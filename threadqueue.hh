@@ -1,3 +1,5 @@
+#ifndef _THREAD_QUEUE_HH
+#define _THREAD_QUEUE_HH
 #include <mutex>
 #include <condition_variable>
 #include <queue>
@@ -68,3 +70,4 @@ public:
         return data_queue.empty();
     }
 };
+#endif 
