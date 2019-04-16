@@ -1,3 +1,5 @@
+#ifndef _CHECK_FILE_HH
+#define _CHECK_FILE_HH
 #include <string>
 #include <sys/stat.h>
 
@@ -29,3 +31,4 @@ enFILESTATUS checkfile(const std::string& theFileName)
 
     return enFILESTATUS::FILE_NOT_EMPTY;
 }
+#endif
