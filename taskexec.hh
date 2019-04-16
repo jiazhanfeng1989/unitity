@@ -8,6 +8,7 @@
 #include <deque>
 #include <future>
 #include <iostream>
+#include <algorithm>
 
 template<typename T>
 class TaskExec final
@@ -35,12 +36,8 @@ public:
                                 std::unique_lock<std::mutex> aLock(myMutex);
                                 myStop = true;
                                 myCond.notify_all();
-                                aLock.unlock();
-
-                                for (auto & athread : myThreads)
-                                {
-                                    athread.join();
-                                }}
+                                aLock.unlock();								
+								for_each(myThreads.begin(),myThreads,end(),std::mem_fn(&std::thread::join));
 						);
     }
 
