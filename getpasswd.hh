@@ -1,3 +1,5 @@
+#ifndef _GET_PASSWD_HH
+#define _GET_PASSWD_HH
 #include <termio.h>
 #include <iostream>
 
@@ -73,5 +75,6 @@ std::string CPassword::GetPassword()
 {
    return mypsw;
 }
+#endif
 
 
