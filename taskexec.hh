@@ -38,7 +38,13 @@ public:
                                 myCond.notify_all();
                                 aLock.unlock();								
 								for_each(myThreads.begin(),myThreads,end(),std::mem_fn(&std::thread::join));
-						);
+								aLock.lock();
+								if(myPromise)
+								{
+									myPromise->set_value();
+									myPromise.reset(nullptr);
+								}
+							});
     }
 
     void Add(T task)
