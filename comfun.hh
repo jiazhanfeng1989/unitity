@@ -13,4 +13,16 @@ std::string& trim(std::string& s)
 
 	return s;
 }
+
+// trim from both ends
+static std::string& trim(std::string& s)
+{
+    // trim from start
+    s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int c) { return !std::isspace(c); }));
+
+    // trim from end
+    s.erase(std::find_if(s.rbegin(), s.rend(), [](int c) { return !std::isspace(c); }).base(), s.end());
+
+    return s;
+}
 #endif
